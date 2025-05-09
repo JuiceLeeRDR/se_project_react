@@ -1,0 +1,21 @@
+.item-card {
+  width: 325px;
+  border: 1px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.item-card__text {
+  position: absolute;
+  margin: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 2px 12px;
+  top: 15px;
+}
+
+.item-card__image {
+  border-radius: 8px;
+  width: 100%;
+}
