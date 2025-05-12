@@ -8,11 +8,11 @@ function ModalWithForm({
   activeModal,
   closeActiveModal,
   handleCloseClick,
+  isOpen,
+  name,
 }) {
   return (
-    <div
-      className={`modal ${activeModal === "add-garment" ? "modal_opened" : ""}`}
-    >
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container">
         <button className="modal__close-btn" onClick={handleCloseClick}>
           <img
@@ -22,7 +22,7 @@ function ModalWithForm({
           />
         </button>
         <h2 className="modal__header">{title}</h2>
-        <form name="new-garment" className="modal__form" noValidate>
+        <form name={name} className="modal__form" noValidate>
           {children}
           <button type="submit" className="modal__save-button">
             {buttonText}
