@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
@@ -7,13 +6,11 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 // import React from "react";
 
-function Header({ handleAddBtnClick, weatherData, handleToggleSwitchChange }) {
+function Header({ handleAddBtnClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-
-  const [checked, setChecked] = useState("F");
 
   return (
     <header className="header">
@@ -24,9 +21,9 @@ function Header({ handleAddBtnClick, weatherData, handleToggleSwitchChange }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch
-        checked={checked}
-        handleChange={() => setChecked(!checked)}
-        handleToggleSwitchChange={handleToggleSwitchChange}
+      // checked={checked}
+      // handleChange={() => setChecked(!checked)}
+      // handleToggleSwitchChange={handleToggleSwitchChange}
       />
       <button
         onClick={handleAddBtnClick}

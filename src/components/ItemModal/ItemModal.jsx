@@ -1,19 +1,16 @@
 import "./ItemModal.css";
-import shorts from "../../assets/shorts.png";
 import modalclosebtn from "../../assets/modalclosebtn.svg";
-import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 
 function ItemModal({
   activeModal,
   card,
   handleCloseClick,
-  handleDeleteBtnClick,
   deleteClick,
-  onDeleteItem,
+  isOpen,
 }) {
   return (
     <div
-      className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}
+      className={`modal ${isOpen ? "modal_opened" : ""}`}
       id="preview-item-modal"
     >
       <div className="item-modal__content">

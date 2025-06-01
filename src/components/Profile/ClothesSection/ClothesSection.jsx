@@ -1,6 +1,6 @@
 import "./ClothesSection.css";
 // import { defaultClothingItems } from "../../../utils/constants";
-import ItemCard from "../../Main/ItemCard/ItemCard";
+import ItemCard from "../../ItemCard/ItemCard";
 
 const ClothesSection = ({ onSelectCard, clothingItems, handleAddBtnClick }) => {
   return (

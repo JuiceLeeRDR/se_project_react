@@ -3,11 +3,6 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
 const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
-  //   function handleSubmit(evt) {
-  //     evt.preventDefault();
-  //     onAddItem();
-  //   }
-
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
@@ -25,14 +20,12 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
   };
 
   const handleSubmit = (e) => {
-    // console.log("Form data:", { name, imageUrl, weatherType });
     e.preventDefault();
 
     onAddItem({ name, imageUrl, weatherType });
     setName("");
     setImageUrl("");
     setWeatherType("");
-    //empty inputs
   };
 
   return (

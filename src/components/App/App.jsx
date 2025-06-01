@@ -13,11 +13,11 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { getWeatherData, processTempRanges } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../../src/contexts/CurrentTemperatureUnitContext.js";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.jsx";
-import { getItems, postNewItems, deleteItems } from "../../utils/Api.js";
+import { getItems, postNewItems, deleteItems } from "../../utils/api.js";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  console.log(currentTemperatureUnit);
+
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -35,7 +35,6 @@ function App() {
   };
 
   const handleDeleteBtnClick = () => {
-    console.log("Delete button has be clicked!");
     setActiveModal("delete");
   };
 
@@ -52,15 +51,8 @@ function App() {
   };
 
   const onAddItem = ({ name, imageUrl, weatherType }) => {
-    console.log("handleAddItemSubmit called with:", {
-      name,
-      imageUrl,
-      weatherType,
-    });
-
     postNewItems({ name, imageUrl, weatherType })
       .then((newItem) => {
-        console.log("New item from API:", newItem);
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
       })
@@ -68,9 +60,6 @@ function App() {
   };
 
   const onDeleteItem = (card) => {
-    console.log("Deleting card:", card);
-    console.log("Card ID:", card._id);
-
     deleteItems(card._id)
       .then(() => {
         setClothingItems((prevItems) =>
@@ -96,7 +85,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
         //set clothing items
         setClothingItems(data);
       })
@@ -141,6 +129,7 @@ function App() {
             card={selectedCard}
             handleCloseClick={closeActiveModal}
             deleteClick={handleDeleteBtnClick}
+            isOpen={activeModal === "preview"}
           />
           <DeleteItemModal
             activeModal={activeModal}

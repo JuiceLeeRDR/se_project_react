@@ -105,6 +105,42 @@
       "imageUrl": "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c25lYWtlcnN8ZW58MHx8MHx8fDA%3D",
       "weatherType": "cold",
       "_id": 20
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weatherType": "warm",
+      "_id": 21
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weatherType": "warm",
+      "_id": 22
+    },
+    {
+      "name": "shoes",
+      "imageUrl": "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weatherType": "warm",
+      "_id": 23
+    },
+    {
+      "name": "shoes",
+      "imageUrl": "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c25lYWtlcnN8ZW58MHx8MHx8fDA%3D",
+      "weatherType": "warm",
+      "_id": 24
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://images.unsplash.com/photo-1680292783974-a9a336c10366?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weatherType": "warm",
+      "_id": 25
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://images.unsplash.com/photo-1610582144787-eda2e6f293b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weatherType": "warm",
+      "_id": 26
     }
   ]
 }
