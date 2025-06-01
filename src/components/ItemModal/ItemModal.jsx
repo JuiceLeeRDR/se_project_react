@@ -35,9 +35,11 @@ function ItemModal({
           <p className="item-modal__image-caption">
             Weather: {card.weatherType}
           </p>
-          <button onClick={deleteClick} className="item-card__delete-btn">
-            Delete Item
-          </button>
+          <div className="delete-btn__cntnr">
+            <button onClick={deleteClick} className="item-card__delete-btn">
+              Delete Item
+            </button>
+          </div>
         </div>
       </div>
     </div>

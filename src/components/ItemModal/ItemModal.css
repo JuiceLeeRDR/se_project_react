@@ -23,6 +23,7 @@
 
 .item-modal__content {
   position: relative;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -47,6 +48,7 @@
 .item-modal__textbox {
   margin: 0;
   padding: 32px;
+  position: relative;
 }
 
 .item-modal__image-caption {
@@ -66,4 +68,10 @@
   background-color: transparent;
   color: #ff4d00;
   width: fit-content;
+}
+
+.delete-btn__cntnr {
+  position: absolute;
+  top: 35px;
+  right: 25px;
 }

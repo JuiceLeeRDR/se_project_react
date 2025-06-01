@@ -21,7 +21,7 @@
   transition-delay: 0s;
 }
 
-.modal__container {
+.delete-modal__container {
   width: 100%;
   background-color: #fff;
   border-radius: 8px;
@@ -29,8 +29,6 @@
   max-width: 670px;
   padding: 32px 50px;
   position: relative;
-  /* display: flex; */
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
 }

@@ -12,7 +12,7 @@ const DeleteItemModal = ({
       className={`modal ${activeModal === "delete" ? "modal_opened" : ""}`}
       id="delete-modal"
     >
-      <div className="modal__container modal__container__delete">
+      <div className="delete-modal__container modal__container__delete">
         <button
           className="modal__close-button modal__close-button_delete"
           onClick={handleCloseClick}
