@@ -131,6 +131,7 @@
   white-space: nowrap;
   color: #ff4d00;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .modal__save-button_inactive {
