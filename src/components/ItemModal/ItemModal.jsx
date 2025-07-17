@@ -2,12 +2,15 @@ import "./ItemModal.css";
 import modalclosebtn from "../../assets/modalclosebtn.svg";
 
 function ItemModal({
-  activeModal,
   card,
   handleCloseClick,
   deleteClick,
   isOpen,
+  isLoggedIn,
+  currentUser,
 }) {
+  const isOwn = card.owner === currentUser._id;
+
   return (
     <div
       className={`modal ${isOpen ? "modal_opened" : ""}`}
@@ -32,13 +35,13 @@ function ItemModal({
         />
         <div className="item-modal__textbox">
           <p className="item-modal__image-caption">{card.name}</p>
-          <p className="item-modal__image-caption">
-            Weather: {card.weatherType}
-          </p>
+          <p className="item-modal__image-caption">Weather: {card.weather}</p>
           <div className="delete-btn__cntnr">
-            <button onClick={deleteClick} className="item-card__delete-btn">
-              Delete Item
-            </button>
+            {isOwn && isLoggedIn && (
+              <button className="item-card__delete-btn" onClick={deleteClick}>
+                Delete item
+              </button>
+            )}
           </div>
         </div>
       </div>

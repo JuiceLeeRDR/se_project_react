@@ -5,7 +5,7 @@ import { useState } from "react";
 const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [weatherType, setWeatherType] = useState("");
+  const [weather, setweather] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -15,17 +15,15 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
     setImageUrl(e.target.value);
   };
 
-  const handleSetWeatherType = (e) => {
-    setWeatherType(e.target.value);
+  const handleSetweather = (e) => {
+    setweather(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    onAddItem({ name, imageUrl, weatherType });
+  const handleSubmit = () => {
+    onAddItem({ name, imageUrl, weather });
     setName("");
     setImageUrl("");
-    setWeatherType("");
+    setweather("");
   };
 
   return (
@@ -68,8 +66,8 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
             id="hot"
             name="weatherCondition"
             value="hot"
-            checked={weatherType === "hot"}
-            onChange={handleSetWeatherType}
+            checked={weather === "hot"}
+            onChange={handleSetweather}
           />
           <label htmlFor="hot">Hot</label>
         </div>{" "}
@@ -79,8 +77,8 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
             id="warm"
             name="weatherCondition"
             value="warm"
-            checked={weatherType === "warm"}
-            onChange={handleSetWeatherType}
+            checked={weather === "warm"}
+            onChange={handleSetweather}
           />
           <label htmlFor="warm">Warm</label>
         </div>{" "}
@@ -90,8 +88,8 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
             id="cold"
             name="weatherCondition"
             value="cold"
-            checked={weatherType === "cold"}
-            onChange={handleSetWeatherType}
+            checked={weather === "cold"}
+            onChange={handleSetweather}
           />
           <label htmlFor="cold">Cold</label>
         </div>

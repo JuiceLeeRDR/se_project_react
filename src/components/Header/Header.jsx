@@ -3,14 +3,22 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-// import React from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
-function Header({ handleAddBtnClick, weatherData }) {
+function Header({
+  handleAddBtnClick,
+  weatherData,
+  isLoggedIn,
+  registerClick,
+  logInClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -32,12 +40,39 @@ function Header({ handleAddBtnClick, weatherData }) {
       >
         <p className="header__btn-text">+ Add clothes</p>
       </button>
-      <Link to="/profile" className="header__user-cntnr">
-        <div className="header__user-cntnr">
-          <p className="header__user">Name of user</p>
-          <img src={avatar} alt="User avatar" className="header__avatar" />
+      {isLoggedIn ? (
+        <Link to="/profile" className="header__user-cntnr">
+          <p className="header__user">{currentUser?.name || "User"}</p>
+          {currentUser?.avatar ? (
+            <img
+              src={currentUser.avatar}
+              alt="User avatar"
+              className="header__avatar"
+            />
+          ) : (
+            <div className="header__avatar-placeholder">
+              {currentUser?.name?.charAt(0).toUpperCase() || "U"}
+            </div>
+          )}
+        </Link>
+      ) : (
+        <div className="header__auth-buttons">
+          <button
+            className="header__login-btn header"
+            onClick={logInClick}
+            type="button"
+          >
+            Log In
+          </button>
+          <button
+            className="header__signup-btn header"
+            onClick={registerClick}
+            type="button"
+          >
+            Sign Up
+          </button>
         </div>
-      </Link>
+      )}
     </header>
   );
 }

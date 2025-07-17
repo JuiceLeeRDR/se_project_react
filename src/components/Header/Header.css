@@ -59,3 +59,22 @@
   letter-spacing: 0%;
   padding-left: 20px;
 }
+.header__auth-buttons {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+
+.header__login-btn {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+.header__signup-btn {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}

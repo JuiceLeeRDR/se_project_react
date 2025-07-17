@@ -4,7 +4,13 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherData, onSelectCard, clothingItems }) {
+function Main({
+  weatherData,
+  onSelectCard,
+  clothingItems,
+  onCardLike,
+  isLoggedIn,
+}) {
   const { currentTemperatureUnit, handleToggleSwitchChange } = React.useContext(
     CurrentTemperatureUnitContext
   );
@@ -20,7 +26,7 @@ function Main({ weatherData, onSelectCard, clothingItems }) {
         <ul className="item-cards__list">
           {clothingItems
             .filter((item) => {
-              return item.weatherType === weatherData.type;
+              return item.weather === weatherData.type;
             })
             .map((item) => {
               return (
@@ -28,6 +34,8 @@ function Main({ weatherData, onSelectCard, clothingItems }) {
                   key={item._id}
                   item={item}
                   onSelectCard={onSelectCard}
+                  onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
                 />
               );
             })}

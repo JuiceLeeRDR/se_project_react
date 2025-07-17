@@ -13,3 +13,19 @@
 .sidebar__username {
   white-space: nowrap;
 }
+
+.sidebar__edit-profile__btn {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  border-style: none;
+}
+
+.sidebar__logout__btn {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  border-style: none;
+}

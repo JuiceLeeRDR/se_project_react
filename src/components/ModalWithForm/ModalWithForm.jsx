@@ -1,5 +1,6 @@
 import "./ModalWithForm.css";
 import mwfclosebtn from "../../assets/mwfclosebtn.svg";
+import { useState } from "react";
 
 function ModalWithForm({
   children,
@@ -9,7 +10,17 @@ function ModalWithForm({
   isOpen,
   name,
   onSubmit,
+  closeActiveModal,
 }) {
+  //declare handlesubmit function
+  //prevent default browser behavior and call onsubmit
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("the submit button has been clicked!");
+    onSubmit();
+    handleCloseClick();
+  };
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container">
@@ -22,7 +33,7 @@ function ModalWithForm({
         </button>
         <h2 className="modal__header">{title}</h2>
         <form
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           name={name}
           className="modal__form"
           noValidate
