@@ -122,6 +122,24 @@
   white-space: nowrap;
 }
 
+.modal__signup-btn {
+  border-style: none;
+  background-color: transparent;
+  color: #212121;
+  width: 124px;
+  height: 36px;
+  align-self: flex-end;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  border: none;
+  font-size: 16px;
+  line-height: 16px;
+  gap: 8px;
+  white-space: nowrap;
+}
+
 .modal__save-button_inactive {
   opacity: 50%;
 }

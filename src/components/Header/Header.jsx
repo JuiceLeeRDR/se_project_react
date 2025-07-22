@@ -33,22 +33,25 @@ function Header({
       // handleChange={() => setChecked(!checked)}
       // handleToggleSwitchChange={handleToggleSwitchChange}
       />
-      <button
-        onClick={handleAddBtnClick}
-        className="header__add-clothes-button"
-        type="button"
-      >
-        <p className="header__btn-text">+ Add clothes</p>
-      </button>
+
       {isLoggedIn ? (
         <Link to="/profile" className="header__user-cntnr">
+          <button
+            onClick={handleAddBtnClick}
+            className="header__add-clothes-button"
+            type="button"
+          >
+            <p className="header__btn-text">+ Add clothes</p>
+          </button>{" "}
           <p className="header__user">{currentUser?.name || "User"}</p>
           {currentUser?.avatar ? (
-            <img
-              src={currentUser.avatar}
-              alt="User avatar"
-              className="header__avatar"
-            />
+            <>
+              <img
+                src={currentUser.avatar}
+                alt="User avatar"
+                className="header__avatar"
+              />
+            </>
           ) : (
             <div className="header__avatar-placeholder">
               {currentUser?.name?.charAt(0).toUpperCase() || "U"}

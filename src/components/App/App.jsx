@@ -35,13 +35,13 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "", email: "" });
-  console.log(currentUser);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -128,13 +128,18 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          setIsLoggedIn(true);
-          setCurrentUser(data.user);
+          api
+            .checkToken(data.token)
+            .then((data) => {
+              setIsLoggedIn(true);
+              setCurrentUser(data.user);
+              closeActiveModal();
+            })
+            .catch(console.error);
           navigate("/profile");
         }
       })
       .catch(console.error);
-    closeActiveModal();
   };
 
   const handleProfileUpdate = ({ name, avatar }) => {
@@ -174,7 +179,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch(console.error);
   };
 
   useEffect(() => {
@@ -207,11 +212,26 @@ function App() {
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data);
-        // setAvatar(data);
         navigate("/");
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -248,9 +268,11 @@ function App() {
                       onSelectCard={handleSelectedCard}
                       clothingItems={clothingItems}
                       handleAddBtnClick={handleAddBtnClick}
-                      currentUser={currentUser}
+                      // currentUser={currentUser}
                       handleLogOutBtnClick={handleLogOutBtnClick}
                       handleEditProfileClick={handleEditProfileClick}
+                      isLoggedIn={isLoggedIn}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
@@ -271,6 +293,7 @@ function App() {
               handleCloseClick={closeActiveModal}
               registerClick={handleSignUpBtnClick}
               handleRegistration={handleRegistration}
+              handleLogIn={handleLogInBtnClick}
             />
             <LogIn
               isOpen={activeModal === "log-in"}
@@ -278,6 +301,7 @@ function App() {
               logInClick={handleLogInBtnClick}
               handleLogin={handleLogin}
               data={data}
+              handleSignUpBtnClick={handleSignUpBtnClick}
             />
             <ItemModal
               activeModal={activeModal}
@@ -286,7 +310,7 @@ function App() {
               deleteClick={handleDeleteBtnClick}
               isOpen={activeModal === "preview"}
               isLoggedIn={isLoggedIn}
-              currentUser={currentUser}
+              // currentUser={currentUser}
               selectedCard={selectedCard}
             />
             <DeleteItemModal

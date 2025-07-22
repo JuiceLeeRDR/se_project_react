@@ -3,7 +3,7 @@ import modalclosebtnwhite from "../../assets/modalclosebtnwhite.svg";
 
 const DeleteItemModal = ({
   activeModal,
-  handleCloseClick,
+  // handleCloseClick,
   onDeleteItem,
   card,
 }) => {
@@ -15,7 +15,7 @@ const DeleteItemModal = ({
       <div className="delete-modal__container modal__container__delete">
         <button
           className="modal__close-button modal__close-button_delete"
-          onClick={handleCloseClick}
+          // onClick={handleCloseClick}
         >
           {" "}
           <img
@@ -42,7 +42,7 @@ const DeleteItemModal = ({
           </button>
           <button
             type="button"
-            onClick={handleCloseClick}
+            // onClick={handleCloseClick}
             className="modal__cancel-button"
           >
             Cancel

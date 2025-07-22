@@ -2,7 +2,12 @@ import "./LogInModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
-const LogInModal = ({ isOpen, handleCloseClick, handleLogin }) => {
+const LogInModal = ({
+  isOpen,
+  handleCloseClick,
+  handleLogin,
+  handleSignUpBtnClick,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,13 +22,13 @@ const LogInModal = ({ isOpen, handleCloseClick, handleLogin }) => {
   };
 
   const handleSubmit = () => {
-    console.log("You're signed up!");
+    // e.preventDefault();
     handleLogin(data);
   };
 
   return (
     <ModalWithForm
-      buttonText="Log In"
+      // buttonText="Log In"
       title="Log In"
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
@@ -55,6 +60,16 @@ const LogInModal = ({ isOpen, handleCloseClick, handleLogin }) => {
           value={data.password}
         />
       </label>
+      <button type="submit" className="modal__save-button">
+        Log In
+      </button>
+      <button
+        type="button"
+        className="modal__signup-btn"
+        onClick={handleSignUpBtnClick}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 };

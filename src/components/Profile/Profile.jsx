@@ -1,6 +1,8 @@
 import ClothesSection from "./ClothesSection/ClothesSection";
 import "./Profile.css";
 import SideBar from "./SideBar/SideBar";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 const Profile = ({
   onSelectCard,
@@ -8,15 +10,19 @@ const Profile = ({
   handleAddBtnClick,
   handleLogOutBtnClick,
   handleEditProfileClick,
+  isLoggedIn,
+  onCardLike,
   // currentUser,
 }) => {
+  const currentUser = useContext(CurrentUserContext);
+  // if (!currentUser) return null;
   return (
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar
           handleLogOutBtnClick={handleLogOutBtnClick}
           handleEditProfileClick={handleEditProfileClick}
-          // currentUser={currentUser}
+          currentUser={currentUser}
         />
       </section>
       <section className="profile__clothing-items">
@@ -24,7 +30,9 @@ const Profile = ({
           onSelectCard={onSelectCard}
           clothingItems={clothingItems}
           handleAddBtnClick={handleAddBtnClick}
-          // currentUser={currentUser}
+          currentUser={currentUser}
+          isLoggedIn={isLoggedIn}
+          onCardLike={onCardLike}
         />
       </section>
     </div>

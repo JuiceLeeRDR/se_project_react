@@ -28,7 +28,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
 
   return (
     <ModalWithForm
-      buttonText="Add garment"
+      // buttonText="Add garment"
       title="New Garment"
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
@@ -94,6 +94,9 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseClick }) => {
           <label htmlFor="cold">Cold</label>
         </div>
       </fieldset>
+      <button type="submit" className="modal__save-button">
+        Add Garment
+      </button>
     </ModalWithForm>
   );
 };

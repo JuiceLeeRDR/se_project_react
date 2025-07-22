@@ -1,5 +1,7 @@
 import "./ItemModal.css";
 import modalclosebtn from "../../assets/modalclosebtn.svg";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemModal({
   card,
@@ -7,9 +9,11 @@ function ItemModal({
   deleteClick,
   isOpen,
   isLoggedIn,
-  currentUser,
+  // currentUser,
 }) {
-  const isOwn = card.owner === currentUser._id;
+  const currentUser = useContext(CurrentUserContext);
+
+  const isOwn = card.owner === currentUser?._id;
 
   return (
     <div

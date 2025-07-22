@@ -2,7 +2,12 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
-const RegisterModal = ({ isOpen, handleCloseClick, handleRegistration }) => {
+const RegisterModal = ({
+  isOpen,
+  handleCloseClick,
+  handleRegistration,
+  handleLogIn,
+}) => {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -17,14 +22,14 @@ const RegisterModal = ({ isOpen, handleCloseClick, handleRegistration }) => {
       [name]: value,
     }));
   };
-  const handleSubmit = () => {
-    console.log("You're logged in!");
+  const handleSubmit = (e) => {
+    e.preventDefault();
     handleRegistration(data);
   };
 
   return (
     <ModalWithForm
-      buttonText="Sign Up"
+      // buttonText="Sign Up"
       title="Sign Up"
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
@@ -82,6 +87,12 @@ const RegisterModal = ({ isOpen, handleCloseClick, handleRegistration }) => {
           value={data.avatar}
         />
       </label>
+      <button type="submit" className="modal__save-button">
+        Sign Up
+      </button>
+      <button type="button" className="modal__signup-btn" onClick={handleLogIn}>
+        or Log in
+      </button>
     </ModalWithForm>
   );
 };

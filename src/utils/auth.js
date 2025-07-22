@@ -1,5 +1,6 @@
 const BASE_URL = "http://localhost:3001";
 const TOKEN_KEY = "jwt";
+import { checkResponse } from "./api";
 
 export const setToken = (token) => localStorage.setItem(TOKEN_KEY, token);
 
@@ -14,9 +15,7 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const signUp = ({ name, avatar, email, password }) => {
@@ -26,9 +25,7 @@ export const signUp = ({ name, avatar, email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const signIn = ({ email, password }) => {
@@ -38,9 +35,7 @@ export const signIn = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const updateProfile = ({ name, avatar }) => {
@@ -52,9 +47,7 @@ export const updateProfile = ({ name, avatar }) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const addCardLike = (id, token) => {
@@ -64,9 +57,7 @@ export const addCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export const removeCardLike = (id, token) => {
@@ -76,9 +67,7 @@ export const removeCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 // export { signUp, signIn, authorize, setToken, getToken };

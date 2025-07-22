@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function ModalWithForm({
   children,
-  buttonText,
+  // buttonText,
   title,
   handleCloseClick,
   isOpen,
@@ -19,7 +19,7 @@ function ModalWithForm({
     e.preventDefault();
     console.log("the submit button has been clicked!");
     onSubmit();
-    handleCloseClick();
+    // handleCloseClick();
   };
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
@@ -39,9 +39,6 @@ function ModalWithForm({
           noValidate
         >
           {children}
-          <button type="submit" className="modal__save-button">
-            {buttonText}
-          </button>
         </form>
       </div>
     </div>
