@@ -22,7 +22,7 @@ const Profile = ({
         <SideBar
           handleLogOutBtnClick={handleLogOutBtnClick}
           handleEditProfileClick={handleEditProfileClick}
-          currentUser={currentUser}
+          // currentUser={currentUser}
         />
       </section>
       <section className="profile__clothing-items">
@@ -30,7 +30,7 @@ const Profile = ({
           onSelectCard={onSelectCard}
           clothingItems={clothingItems}
           handleAddBtnClick={handleAddBtnClick}
-          currentUser={currentUser}
+          // currentUser={currentUser}
           isLoggedIn={isLoggedIn}
           onCardLike={onCardLike}
         />

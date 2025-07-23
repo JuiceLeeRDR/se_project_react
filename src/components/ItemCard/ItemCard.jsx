@@ -12,7 +12,7 @@ function ItemCard({ item, onSelectCard, onCardLike, isLoggedIn }) {
 
   // const isOwn = item.owner === currentUser._id;
 
-  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const isLiked = item.likes.some((id) => id === currentUser?._id);
 
   const handleLike = () => {
     console.log("Like button clicked, isLiked:", isLiked);

@@ -1,17 +1,29 @@
 import "./EditProfileModal.css";
 import ModalWithForm from "../../ModalWithForm/ModalWithForm";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import CurrentUserContext from "../../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({
   isOpen,
   handleCloseClick,
-  currentUser,
+  // currentUser,
   handleProfileUpdate,
 }) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const [data, setData] = useState({
     name: "",
     avatar: "",
   });
+
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setData({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
+    }
+  }, [isOpen, currentUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,17 +34,12 @@ const EditProfileModal = ({
   };
 
   const handleSubmit = (e) => {
-    handleProfileUpdate(data);
+    e.preventDefault();
+    handleProfileUpdate({
+      name: data.name,
+      avatar: data.avatar,
+    });
   };
-
-  useEffect(() => {
-    if (isOpen && currentUser) {
-      setData({
-        name: currentUser.name || "",
-        avatar: currentUser.avatar || "",
-      });
-    }
-  }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm
@@ -47,7 +54,7 @@ const EditProfileModal = ({
         <input
           type="text"
           name="name"
-          id="name"
+          id="edit-name"
           className="modal__input"
           placeholder="Name"
           required
@@ -60,7 +67,7 @@ const EditProfileModal = ({
         <input
           type="url"
           name="avatar"
-          id="avatar"
+          id="edit-avatar"
           className="modal__input"
           placeholder="Avatar URL"
           required
@@ -68,6 +75,9 @@ const EditProfileModal = ({
           value={data.avatar}
         />
       </label>
+      <button type="submit" className="modal__save-button">
+        Save
+      </button>
     </ModalWithForm>
   );
 };

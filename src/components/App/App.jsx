@@ -19,7 +19,7 @@ import { getItems, postNewItems, deleteItems } from "../../utils/api.js";
 import * as api from "../../utils/auth.js";
 import { setToken, signUp, getToken, signIn } from "../../utils/auth.js";
 import EditProfileModal from "../Profile/EditProfileModal/EditProfileModal.jsx";
-import ProtectedRoute from "../AddItemModal/ProtectedRoute.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -41,7 +41,7 @@ function App() {
   });
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -110,11 +110,14 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          setIsLoggedIn(true);
-          setCurrentUser(data.user);
-          setName(data.name);
-          setAvatar(data.avatar);
-          navigate("/profile");
+          api
+            .checkToken(data.token)
+            .then((userData) => {
+              setIsLoggedIn(true);
+              setCurrentUser(userData);
+              navigate("/profile");
+            })
+            .catch(console.error);
         }
       })
       .catch(console.error);
@@ -132,7 +135,7 @@ function App() {
             .checkToken(data.token)
             .then((data) => {
               setIsLoggedIn(true);
-              setCurrentUser(data.user);
+              setCurrentUser(data);
               closeActiveModal();
             })
             .catch(console.error);
@@ -329,7 +332,7 @@ function App() {
             <EditProfileModal
               isOpen={activeModal === "edit-profile"}
               handleCloseClick={closeActiveModal}
-              currentUser={currentUser}
+              // currentUser={currentUser}
               handleProfileUpdate={handleProfileUpdate}
             />
 
