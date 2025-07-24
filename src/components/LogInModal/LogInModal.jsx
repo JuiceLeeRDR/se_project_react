@@ -21,8 +21,8 @@ const LogInModal = ({
     }));
   };
 
-  const handleSubmit = () => {
-    // e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     handleLogin(data);
   };
 

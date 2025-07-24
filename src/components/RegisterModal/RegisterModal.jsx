@@ -23,8 +23,14 @@ const RegisterModal = ({
     }));
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
-    handleRegistration(data);
+    // e.preventDefault();
+    console.log("the register button is working");
+    handleRegistration({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      avatar: data.avatar,
+    });
   };
 
   return (

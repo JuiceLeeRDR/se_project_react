@@ -16,12 +16,12 @@ const ModalWithForm = ({
   // //   //declare handlesubmit function
   // //   //prevent default browser behavior and call onsubmit
 
-  // // const handleSubmit = () => {
-  // //   // e.preventDefault();
-  // //   console.log("the submit button has been clicked!");
-  // //   onSubmit();
-  //   // handleCloseClick();
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("the submit button has been clicked!");
+    onSubmit(e);
+    // handleCloseClick();
+  };
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container">
@@ -34,7 +34,7 @@ const ModalWithForm = ({
         </button>
         <h2 className="modal__header">{title}</h2>
         <form
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           // name={name}
           className="modal__form"
           noValidate

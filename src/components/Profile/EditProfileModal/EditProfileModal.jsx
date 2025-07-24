@@ -34,7 +34,8 @@ const EditProfileModal = ({
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    console.log("it should be updated!");
+    // e.preventDefault();
     handleProfileUpdate({
       name: data.name,
       avatar: data.avatar,
@@ -43,7 +44,7 @@ const EditProfileModal = ({
 
   return (
     <ModalWithForm
-      buttonText="Edit Profile"
+      // buttonText="Edit Profile"
       title="Edit Profile"
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}

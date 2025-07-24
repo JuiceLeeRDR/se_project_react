@@ -112,12 +112,13 @@ function App() {
           setToken(data.token);
           api
             .checkToken(data.token)
-            .then((userData) => {
+            .then((data) => {
               setIsLoggedIn(true);
-              setCurrentUser(userData);
-              navigate("/profile");
+              setCurrentUser(data);
+              closeActiveModal();
             })
             .catch(console.error);
+          navigate("/profile");
         }
       })
       .catch(console.error);
