@@ -17,7 +17,13 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.jsx";
 import { getItems, postNewItems, deleteItems } from "../../utils/api.js";
 import * as api from "../../utils/auth.js";
-import { setToken, signUp, getToken, signIn } from "../../utils/auth.js";
+import {
+  setToken,
+  signUp,
+  getToken,
+  signIn,
+  removeToken,
+} from "../../utils/auth.js";
 import EditProfileModal from "../Profile/EditProfileModal/EditProfileModal.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
@@ -81,6 +87,7 @@ function App() {
 
   const handleLogOutBtnClick = () => {
     setIsLoggedIn(false);
+    removeToken();
   };
 
   const onAddItem = ({ name, imageUrl, weather }) => {
@@ -107,19 +114,8 @@ function App() {
 
   const handleRegistration = ({ name, avatar, email, password }) => {
     signUp({ name, avatar, email, password })
-      .then((data) => {
-        if (data.token) {
-          setToken(data.token);
-          api
-            .checkToken(data.token)
-            .then((data) => {
-              setIsLoggedIn(true);
-              setCurrentUser(data);
-              closeActiveModal();
-            })
-            .catch(console.error);
-          navigate("/profile");
-        }
+      .then(() => {
+        handleLogin({ email, password });
       })
       .catch(console.error);
   };
@@ -130,17 +126,19 @@ function App() {
     }
     signIn({ email, password })
       .then((data) => {
+        console.log("HERE ============");
         if (data.token) {
+          setIsLoggedIn(true);
           setToken(data.token);
-          api
-            .checkToken(data.token)
-            .then((data) => {
-              setIsLoggedIn(true);
-              setCurrentUser(data);
-              closeActiveModal();
-            })
-            .catch(console.error);
-          navigate("/profile");
+          // api
+          //   .checkToken(data.token)
+          //   .then((data) => {
+          //     setIsLoggedIn(true);
+          //     setCurrentUser(data);
+          closeActiveModal();
+          //   })
+          //   .catch(console.error);
+          // navigate("/profile");
         }
       })
       .catch(console.error);
@@ -219,7 +217,7 @@ function App() {
         navigate("/");
       })
       .catch(console.error);
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!activeModal) return;
