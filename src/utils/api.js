@@ -1,6 +1,7 @@
 import { getToken } from "./auth";
+import { BASE_URL } from "./constants";
 
-const baseUrl = "http://localhost:3001";
+// const BASE_URL = "http://localhost:3001";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -11,7 +12,7 @@ function request(url, options) {
 }
 
 function getItems() {
-  return request(`${baseUrl}/items`);
+  return request(`${BASE_URL}/items`);
 }
 
 function postNewItems({ name, imageUrl, weather }) {
@@ -19,7 +20,7 @@ function postNewItems({ name, imageUrl, weather }) {
   console.log("Request data being sent:", requestData);
   console.log("Token:", getToken());
 
-  return request(`${baseUrl}/items`, {
+  return request(`${BASE_URL}/items`, {
     method: "POST",
 
     headers: {
@@ -35,7 +36,7 @@ function postNewItems({ name, imageUrl, weather }) {
 }
 
 function deleteItems(_id) {
-  return request(`${baseUrl}/items/${_id}`, {
+  return request(`${BASE_URL}/items/${_id}`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${getToken()}`,

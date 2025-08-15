@@ -67,3 +67,8 @@ export const coordinates = {
   latitude: 35.408752,
   longitude: -80.579514,
 };
+
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.betterweather.crabdance.com"
+    : "http://localhost:3001";

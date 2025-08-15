@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:3001";
+import { BASE_URL } from "./constants";
+
+// const BASE_URL = "http://localhost:3001";
 const TOKEN_KEY = "jwt";
 import { checkResponse } from "./api";
 
